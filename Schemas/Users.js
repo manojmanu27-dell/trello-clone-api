@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const UserSchema = mongoose.Schema({
+const UserSchema = new mongoose.Schema({
     userName: {
         type: String,
         required: true
@@ -10,7 +10,12 @@ const UserSchema = mongoose.Schema({
         required: true
     },
     hash: String,
+    encryptedHash: String,
     iv: String,
+    googleAuth: {
+        type: String,
+        default: "N"
+    },
     createdDate: {
         type: Date,
         default: Date.now

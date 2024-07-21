@@ -2,5 +2,12 @@
     "tets": "thing",
     "mongoDbProperties": {
         "password": "oFj9ycedHD5er7P8"
+    },
+    "hashProperties": {
+        "algo": "aes-256-cbc"
+    },
+    "jwtConfig": {
+        "secretKey": "aa38dc6609e9593ab4def9365019efd3eaa8b0113d9fafd4a2561977e67ef50c",
+        "expiresIn": 12000
     }
 }
