@@ -7,12 +7,6 @@ module.exports = (id) => {
         try {
             let taskList = await TaskList.find({ userId: id });
             if (taskList) {
-                taskList.forEach((item) => {
-                    console.log("the data is",moment(item.createdDate).format("DD/MM/YYYY hh:mm:s"))
-                    item.createdDate = moment(item.createdDate).format("DD/MM/YYYY hh:mm:s");
-                    item.updatedDate = moment(item.updatedDate).format("DD/MM/YYYY hh:mm:s");
-                })
-                console.log("inside checking the data",taskList)
                 return resolve(taskList);
             } else {
                 return reject("No Data");
