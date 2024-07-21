@@ -20,7 +20,7 @@ exports.createTask = validator.body(Joi.object({
     userId: Joi.string().min(5).required(),
     status: Joi.string().min(4).required(),
     description: Joi.string().min(5).required(),
-    title: Joi.string().min(5).required()
+    title: Joi.string().min(4).required()
 }))
 
 exports.modifyTask = validator.body(Joi.object({

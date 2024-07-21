@@ -1,6 +1,7 @@
 const Users = require("../Schemas/Users");
 const validateUser = require("./validateUser");
 const userDtls = require("./fetchUserDtls");
+const generateToken = require("../webToken/generateToken");
 
 module.exports = async (req, res) => {
     try {
@@ -10,7 +11,7 @@ module.exports = async (req, res) => {
             let userInfo = {};
             let gmailInfo = JSON.parse(atob(req.body.credential.split(".")[1]));
             console.log("the gmail info is", gmailInfo)
-            let isUserPresent = validateUser(gmailInfo.email);
+            let isUserPresent = await validateUser(gmailInfo.email);
             console.log("user information is", isUserPresent);
             if (isUserPresent) {
                 userInfo = {
@@ -22,7 +23,7 @@ module.exports = async (req, res) => {
                 console.log("the task list is", taskList)
             } else {
                 const newUser = new Users({
-                    userName: req.body.userName,
+                    userName: gmailInfo.name,
                     email: gmailInfo.email,
                     googleAuth: "Y"
                 })
